@@ -173,9 +173,12 @@ export default function App() {
               {item.label}
             </a>
           ))}
+          <a href="#contact" className="nav-link nav-cta" onClick={() => setMobileMenuOpen(false)}>
+            Pesan Sekarang
+          </a>
         </nav>
 
-        <a href="#contact" className="cta-button">
+        <a href="#contact" className="cta-button desktop-cta">
           Pesan Sekarang
         </a>
       </header>

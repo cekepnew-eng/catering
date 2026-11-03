@@ -35,10 +35,21 @@ body {
   min-width: 320px;
   min-height: 100vh;
   max-width: 100%;
-  overflow-x: hidden;
+  width: 100%;
+  overflow-x: clip;
   background: #fff;
   color: var(--text);
   font-family: 'DM Sans', 'Segoe UI', sans-serif;
+}
+
+html, #root, .page-shell {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 button,
@@ -178,6 +189,15 @@ img {
   color: #1b3e1f;
   box-shadow: none;
   font-size: 14px;
+  font-weight: 800;
+}
+
+.nav-cta {
+  display: none;
+  width: 100%;
+  justify-content: flex-start;
+  padding: 0;
+  color: #fff;
   font-weight: 800;
 }
 
@@ -1211,10 +1231,20 @@ img {
 }
 
 @media (max-width: 640px) {
+  html,
+  body,
+  #root,
+  .page-shell {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
   .topbar {
-    width: min(100% - 18px, 1280px);
+    width: 100%;
+    max-width: 100%;
     min-height: 70px;
-    padding: 0 10px;
+    padding: 0 14px;
     gap: 8px;
   }
 
@@ -1253,6 +1283,7 @@ img {
     top: 100%;
     left: 10px;
     right: 10px;
+    width: auto;
     display: none;
     flex-direction: column;
     align-items: flex-start;
@@ -1278,10 +1309,28 @@ img {
     letter-spacing: 0.04em;
   }
 
-  .cta-button {
-    min-height: 40px;
-    padding: 0 16px;
+  .desktop-cta {
+    display: none;
+  }
+
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 42px;
+    width: 100%;
+    padding: 0 12px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #9fe67c, #7ad15c);
+    color: #163b1d;
     font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-section {
+    padding-top: 90px;
   }
 
   .hero-inner,
@@ -1290,24 +1339,82 @@ img {
   .pricing-grid,
   .testimonial-grid,
   .area-grid,
-  .footer-inner {
+  .footer-inner,
+  .process-steps {
     grid-template-columns: 1fr;
   }
 
   .hero-inner,
   .section-inner,
   .footer-inner,
-  .footer-bottom {
-    width: min(100% - 18px, 1280px);
+  .footer-bottom,
+  .why-inner {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .hero-inner {
+    padding: 72px 14px 44px;
+  }
+
+  .hero-copy {
+    max-width: 100%;
   }
 
   .hero-copy h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    line-height: 0.96;
+    letter-spacing: -0.06em;
+  }
+
+  .lead {
+    font-size: 0.96rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .primary-action,
+  .hero-actions .secondary-action {
+    width: 100%;
+  }
+
+  .hero-contact-list {
+    gap: 8px;
+    font-size: 0.92rem;
+  }
+
+  .hero-contact-list li {
+    align-items: flex-start;
+  }
+
+  .hero-panel {
+    width: 100%;
+    padding: 18px 16px 14px;
+    margin-top: 18px;
+  }
+
+  .panel-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .panel-button {
+    min-height: 52px;
+  }
+
+  .section-inner {
+    padding: 48px 0;
   }
 
   .section-title,
   .footer-copy h2 {
-    font-size: 2.2rem;
+    font-size: 2.1rem;
   }
 
   .brand-name {
@@ -1319,11 +1426,79 @@ img {
     letter-spacing: 0.12em;
   }
 
+  .why-inner {
+    padding: 52px 0 42px;
+  }
+
+  .why-title {
+    font-size: 2.3rem;
+  }
+
+  .why-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .halal-row {
+    align-items: flex-start;
+  }
+
+  .reviewer-meta {
+    align-items: flex-start;
+  }
+
+  .testimonial-header {
+    align-items: flex-start;
+  }
+
+  .rating-box {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .process-steps {
+    gap: 20px;
+    padding-top: 8px;
+  }
+
+  .process-steps::before {
+    display: none;
+  }
+
+  .process-step {
+    padding-top: 0;
+  }
+
+  .step-number {
+    width: 46px;
+    height: 46px;
+    font-size: 1.4rem;
+    margin-bottom: 14px;
+  }
+
+  .process-step h3 {
+    font-size: 1.4rem;
+  }
+
   .hero-actions,
   .footer-actions,
   .footer-bottom {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+
+  .footer-contact-box {
+    padding: 18px 16px;
+  }
+
+  .footer-bottom {
+    padding-top: 16px;
+    gap: 12px;
   }
 
   .floating-whatsapp {
